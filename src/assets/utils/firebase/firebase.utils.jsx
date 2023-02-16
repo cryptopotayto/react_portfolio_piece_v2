@@ -1,5 +1,11 @@
 import { initializeApp, } from 'firebase/app';
-import { createUserWithEmailAndPassword, getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { 
+  createUserWithEmailAndPassword, 
+  getAuth, 
+  signInWithRedirect, 
+  signInWithPopup, 
+  GoogleAuthProvider,
+  signInWithEmailAndPassword } from 'firebase/auth';
 import {
     getFirestore,
     doc,
@@ -59,7 +65,15 @@ const firebaseConfig = {
     return userDocRef;
   };
 
+
+
   export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if(!email || !password) return;
     return await createUserWithEmailAndPassword(auth, email, password); //create auth user with inputs
-  }
+  };
+
+  export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+    if(!email || !password) return;
+    return await signInWithEmailAndPassword(auth, email, password); //create auth user with inputs
+  };
+
